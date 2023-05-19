@@ -1,8 +1,8 @@
-import { input } from "../../public/meta.js";
+import { resolveInput } from "../../public/api.js";
 import config from "@proxtx/config";
 
 export const evaluate = async (value) => {
-  let json = await input.resolveArgument(config.pwd, value.json);
+  let json = await resolveInput(config.pwd, value.json);
   if (typeof json == "string") json = JSON.parse(json);
-  return json[await input.resolveArgument(config.pwd, value.key)];
+  return json[await resolveInput(config.pwd, value.key)];
 };
